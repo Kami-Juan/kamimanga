@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# check the last commit and return an error if invalid
+npx --no-install commitlint --edit $1 # https://typicode.github.io/husky/#/?id=husky_git_params-ie-commitlint- -- $1 is a native param
