@@ -1,13 +1,15 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "strict": true,
     "outDir": "dist",
     "rootDir": "src",
     "sourceMap": true,
     "noImplicitAny": false,
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "lib": ["ES2021"]
   },
   "include": ["src", "src/**/*"],
   "exclude": ["node_modules", "prisma"]
