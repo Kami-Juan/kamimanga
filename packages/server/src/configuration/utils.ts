@@ -1,9 +1,9 @@
-export const PUBLISHER_ROLE = 'PUBLISHER_ROLE';
-export const READER_ROLE = 'READER_ROLE';
-export const ADMIN_ROLE = 'ADMIN_ROLE';
+export const PUBLISHER_ROLE = 'PUBLISHER';
+export const READER_ROLE = 'READER';
+export const ADMIN_ROLE = 'ADMIN';
 
-type Role = typeof ADMIN_ROLE | typeof READER_ROLE | typeof PUBLISHER_ROLE;
+export type RoleType = typeof ADMIN_ROLE | typeof READER_ROLE | typeof PUBLISHER_ROLE;
 
-export const hasRole = (role: Role | null, roles: Array<Role>) => {
+export const hasRole = (role: RoleType | null, roles: Array<RoleType>) => {
   return !!role && roles.includes(role);
 };

@@ -4,8 +4,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { appRouter } from './infrastructure/trpc/v1';
+import { appRouter, openApiDocument } from './infrastructure/trpc/v1';
 import { createContext } from './configuration/context';
+import { createOpenApiExpressMiddleware } from 'trpc-openapi';
+import swaggerUi from 'swagger-ui-express';
 
 dotenv.config();
 
@@ -30,5 +32,10 @@ app.use(
     createContext,
   }),
 );
+app.use('/api', createOpenApiExpressMiddleware({ router: appRouter, createContext }));
+
+// Serve Swagger UI with our OpenAPI schema
+app.use('/', swaggerUi.serve);
+app.get('/', swaggerUi.setup(openApiDocument));
 
 app.listen(process.env.SERVER_PORT || 3001, () => console.log('server running'));
